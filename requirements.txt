@@ -1,0 +1,15 @@
+beautifulsoup4==4.3.2
+Django==1.7.5
+django-blog-zinnia==0.15.1
+django-contrib-comments==1.5
+django-debug-toolbar==1.2.2
+django-modeltranslation==0.8
+django-modeltranslation-wrapper==1.2.2
+django-mptt==0.6.1
+django-tagging==0.3.4
+django-xmlrpc==0.1.5
+Pillow==2.7.0
+pyparsing==2.0.3
+pytz==2014.10
+sqlparse==0.1.14
+zinnia-wysiwyg-wymeditor==1.1

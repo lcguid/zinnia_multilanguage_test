@@ -1,11 +1,11 @@
+# -*- coding: utf-8 -*-
 """
-Django settings for zinnia_multilanguage_test project.
+Luiz C. Mostaço-Guidolin
 
-For more information on this file, see
-https://docs.djangoproject.com/en/1.7/topics/settings/
+Add multi-language post support to Zinnia and Django.
 
-For the full list of settings and their values, see
-https://docs.djangoproject.com/en/1.7/ref/settings/
+Based on the documentation from
+http://codeispoetry.me/index.php/django-blog-zinnia-multilanguage-support-with-django-modeltranslation/
 """
 
 from django.utils.translation import ugettext_lazy as _
@@ -23,11 +23,8 @@ SITE_ID = 1
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
@@ -41,9 +38,11 @@ LANGUAGES = [
 MODELTRANSLATION_TRANSLATION_FILES = (
     'zinnia_multilanguage_test.translation',
 )
-#MODELTRANSLATION_WRAPPER SETTINGS
 MODELTRANSLATION_AUTO_POPULATE = True
-MODELTRANSLATION_FALLBACK_LANGUAGES = ('en', 'pt-br')
+MODELTRANSLATION_FALLBACK_LANGUAGES = (
+    'en',
+    'pt-br',
+)
 
 DEBUG_TOOLBAR_PATCH_SETTINGS = False
 
@@ -51,13 +50,17 @@ DEBUG_TOOLBAR_PATCH_SETTINGS = False
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '=_$4k4qnd)q%wket2!565%=**-(rnoh8s8q*m0gk-@dimn4cjz'
+SECRET_KEY = 'Your_secret_key_here'
 
 ALLOWED_HOSTS = []
 
+ROOT_URLCONF = 'demo_zinnia_wymeditor.urls'
+
 INSTALLED_APPS = (
-    'debug_toolbar',
+    # it is very important to have modeltranslation as one of the
+    # first modules to be loaded !!
     'modeltranslation',
+    'debug_toolbar',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -67,11 +70,10 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django_comments',
     # third party apps (zinnia reqs.)
-    # 'modeltranslation_wrapper',
-
     'mptt',
     'tagging',
     'zinnia',
+    'zinnia_wymeditor',
     # my apps
     'zinnia_multilanguage_test',
 )
@@ -100,7 +102,6 @@ MIDDLEWARE_CLASSES = (
 )
 
 ROOT_URLCONF = 'zinnia_multilanguage_test.urls'
-
 WSGI_APPLICATION = 'zinnia_multilanguage_test.wsgi.application'
 
 
